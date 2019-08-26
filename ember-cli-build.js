@@ -1,9 +1,25 @@
-'use strict';
+"use strict";
 
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require("ember-cli/lib/broccoli/ember-app");
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    postcssOptions: {
+      compile: {
+        extension: "scss",
+        enabled: true,
+        parser: require("postcss-scss"),
+        plugins: [
+          {
+            module: require("@csstools/postcss-sass")
+            // options: {
+            //   includePaths: ["node_modules/tachyons-sass"]
+            // }
+          },
+          require("tailwindcss")("./app/tailwind/config.js")
+        ]
+      }
+    }
     // Add options here
   });
 
