@@ -1,0 +1,7 @@
+button {
+  height: $sass-var;
+
+  &:hover {
+    background: green; // sass nesting works
+  }
+}
